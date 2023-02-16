@@ -36,4 +36,4 @@ jobs:
           tags: ${{ env.REGISTRY_SERVER }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
           registry: ${{ env.REGISTRY_SERVER }}
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.GHCR_TOKEN }}
