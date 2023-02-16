@@ -23,6 +23,6 @@ func TestHealthcheckHandlerFn(t *testing.T) {
 
 	// then
 	assert.Equal(t, http.StatusOK, w.Code)
-	assert.Equal(t, `{"server_status":"healthy"}`, w.Body.String())
+	assert.Equal(t, `{"status":"healthy"}`, w.Body.String())
 
 }

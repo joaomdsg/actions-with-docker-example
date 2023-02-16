@@ -5,7 +5,7 @@ An example github actions pipeline using docker that builds, tests and pushes a 
 The application is a very simple go rest api that provides a singe endpoint `/healthcheck`. `GET`requests to this endpoint return this JSON message: 
 ```json
 {
-    "system_status": "healthy"
+    "status": "healthy"
 }
 ```
 
