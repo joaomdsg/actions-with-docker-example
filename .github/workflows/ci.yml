@@ -10,7 +10,7 @@ env:
   # Set the registry server
   REGISTRY_SERVER: ghcr.io
   # Set the image name to the repository name.
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: ${{ github.repository }}/go-app
 
 jobs:
   build:
@@ -23,7 +23,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.16
+          go-version: 1.19
 
       - name: Build and test Go application
         run: go build ./... && go test ./...
