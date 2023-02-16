@@ -25,8 +25,16 @@ jobs:
         with:
           go-version: 1.19
 
-      - name: Build and test Go application
-        run: go build ./... && go test ./...
+      - name: test Go application
+        run: go test ./...
+
+      - name: Login to docker registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.REGISTRY_SERVER }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_TOKEN }}
+
 
       - name: Build and push Docker image to registry
         uses: docker/build-push-action@v2
