@@ -9,7 +9,7 @@ on:
 env:
   # Set the registry server
   REGISTRY_SERVER: ghcr.io
-  # Set the image name to the repository name.
+  # Set the image name to repository/image_name
   IMAGE_NAME: ${{ github.repository }}/go-app
 
 jobs:
@@ -35,13 +35,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_TOKEN }}
 
-
       - name: Build and push Docker image to registry
         uses: docker/build-push-action@v2
         with:
           context: .
           push: true
-          tags: ${{ env.REGISTRY_SERVER }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
-          registry: ${{ env.REGISTRY_SERVER }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_TOKEN }}
+          tags: ${{ env.REGISTRY_SERVER }}/${{ env.IMAGE_NAME }}:latest
