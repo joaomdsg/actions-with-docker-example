@@ -1,0 +1,39 @@
+name: Go CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+env:
+  # Set the registry server
+  REGISTRY_SERVER: ghcr.io
+  # Set the image name to the repository name.
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.16
+
+      - name: Build and test Go application
+        run: go build ./... && go test ./...
+
+      - name: Build and push Docker image to registry
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: ${{ env.REGISTRY_SERVER }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          registry: ${{ env.REGISTRY_SERVER }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
