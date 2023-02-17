@@ -10,7 +10,7 @@ The application is a Go REST API that offers a single endpoint, `/healthcheck`. 
 ```
 
 ## CI/CD pipeline
-The pipeline configuration consists of a yml file in `.github/workflows/ci.yml`. Tis file is automatically picked up by github and executes the tasks below on every new git push.
+The pipeline configuration is defined in a YAML file located at `.github/workflows/ci.yml`. This file is automatically detected by GitHub and triggers the defined tasks every time a new Git push is made.
 
 To push a new image to the GitHub registry, the pipeline must first authenticate itself by searching for a secret named `GHCR_TOKEN`. This secret should contain a personal access token for GitHub with write permission to packages. If the token does not exist, it must be generated and manually added as a secret in the repository settings.
 
