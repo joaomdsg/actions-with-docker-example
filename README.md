@@ -14,4 +14,4 @@ The pipeline configuration consists of a yml file in `.github/workflows/ci.yml`.
 
 To push a new image to the GitHub registry, the pipeline must first authenticate itself by searching for a secret named `GHCR_TOKEN`. This secret should contain a personal access token for GitHub with write permission to packages. If the token does not exist, it must be generated and manually added as a secret in the repository settings.
 
-If the pipeline succeeds, a new docker image sould be avaliable as [package](https://github.com/users/joaomdsg/packages/container/package/actions-with-docker-example) in github.
+If the pipeline succeeds, a new docker image sould be avaliable in[github packages](https://github.com/users/joaomdsg/packages).
