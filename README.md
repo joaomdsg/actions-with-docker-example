@@ -4,14 +4,10 @@ An example github actions pipeline using docker that builds, tests and pushes a 
 ## Go Application
 The application is a Go REST API that offers a single endpoint, `/healthcheck`. When a `GET` request is sent to this endpoint, the API responds with a JSON message: 
 ```json
-{
-    "status": "healthy"
-}
+{ "status": "healthy" }
 ```
 
 ## CI/CD pipeline
 The pipeline configuration is defined in a YAML file located at `.github/workflows/ci.yml`. This file is automatically detected by GitHub and triggers the defined tasks every time a new Git push is made.
 
-To push a new image to the GitHub registry, the pipeline must first authenticate itself by searching for a secret named `GHCR_TOKEN`. This secret should contain a personal access token for GitHub with write permission to packages. If the token does not exist, it must be generated and manually added as a secret in the repository settings.
-
-If the pipeline succeeds, a new docker image sould be avaliable in [github packages](https://github.com/users/joaomdsg/packages).
+If the pipeline succeeds, a new docker image sould be avaliable in the [github packages page](https://github.com/users/joaomdsg/packages).
