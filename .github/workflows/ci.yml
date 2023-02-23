@@ -9,12 +9,15 @@ on:
 env:
   # Set the registry server
   REGISTRY_SERVER: ghcr.io
-  # Set the image name to repository/image_name
+  # Set the image name to repository_name/image_name
   IMAGE_NAME: ${{ github.repository }}/example-go-app
 
 jobs:
-  build:
+  ci:
     runs-on: ubuntu-latest
+
+    # skip the job when commit message includes 'no-ci'
+    if: "!contains(github.event.head_commit.message, 'no-ci')"
 
     steps:
       - name: Checkout code
