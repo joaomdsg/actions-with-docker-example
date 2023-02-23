@@ -9,6 +9,7 @@ on:
 env:
   # Set the registry server
   REGISTRY_SERVER: ghcr.io
+  
   # Set the image name to repository_name/image_name
   IMAGE_NAME: ${{ github.repository }}/example-go-app
 
